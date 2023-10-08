@@ -6,7 +6,7 @@ Diseñar un gestor de tareas el cual contiene la siguiente información:
 - descripción.
 - Estado en la que se encuentre:
   - En progreso.
-  - Sin iniciar.
+  - Creada
   - terminada.
 
 Además, entre el funcionamiento de la aplicación se podrá hacer lo siguiente:

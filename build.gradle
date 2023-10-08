@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id "org.sonarqube" version "4.2.1.3168"
+    id 'jacoco'
 }
 
 group 'com.co.udea'
@@ -27,6 +28,17 @@ sonar {
     }
 }
 
+jacocoTestReport {
+    dependsOn test // tests are required to run before generating the report
+    reports {
+        xml.required = true
+        csv.required = true
+        html.required = true
+    }
+}
+
+
 test {
+    finalizedBy jacocoTestReport
     useJUnitPlatform()
 }

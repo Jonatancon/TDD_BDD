@@ -1,7 +1,7 @@
 package com.co.udea.model;
 
 public enum Status {
-    INIT("Iniciada"),
+    INIT("Creada"),
     PROGRESS("En progreso"),
     CLOSE("Cerrada");
 

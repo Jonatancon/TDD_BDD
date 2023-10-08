@@ -29,7 +29,5 @@ b
 2src/main/java/com/co/udea/service/TaskManager.java,2\c\2ce7b8b4f6cdd9641e45420de46fbf49aa681e40
 Y
 )src/main/java/com/co/udea/model/Note.java,a\b\abd597ec2f0d43a04fb167773ac7d0e622d8cbde
-S
-#src/test/java/service/SaveNote.java,9\c\9c71192d7980a458288e9f863a1873c49fc7dc1f
-<
-runSonar.bat,4\1\41d7d5aa7fe8168e82d63e6fd27d4c2a473a68a0
+;
+runSonar.sh,b\4\b4eb7a31f35b3163b336bd2e9eaaa589c81f1ebc

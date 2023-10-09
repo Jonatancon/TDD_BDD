@@ -17,6 +17,7 @@ dependencies {
 
     testImplementation 'io.cucumber:cucumber-java:7.14.0'
     testImplementation 'io.cucumber:cucumber-junit:7.14.0'
+    testImplementation 'org.mockito:mockito-core:5.2.0'
 }
 
 sonar {
@@ -24,7 +25,7 @@ sonar {
         property "sonar.projectKey", "Jonatancon_TDD_BDD_AYrzPMohMoGScxU2GPAy"
         property "sonar.organization", "Jonatancon"
         property "sonar.host.url", "http://localhost:9000"
-        property "sonar.token", "sqp_64ba27b0579121acd2e13645e6f744f53c331bbe"
+        property "sonar.token", System.getenv("TOKEN")
     }
 }
 
@@ -34,6 +35,11 @@ jacocoTestReport {
         xml.required = true
         csv.required = true
         html.required = true
+    }
+    afterEvaluate {
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, includes: ['**/model/**', '**/persintence/**', '**/service/**'])
+        }))
     }
 }
 

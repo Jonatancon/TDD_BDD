@@ -12,6 +12,9 @@ Diseñar un gestor de tareas el cual contiene la siguiente información:
 Además, entre el funcionamiento de la aplicación se podrá hacer lo siguiente:
 
 - Crear nuevas tareas.
-- Editar tareas.
+- Completar tareas.
+- Iniciar tareas
 - Eliminar tareas.
+- Listar las tareas pendientes.
+- Listar las tareas completadas.
 - Cada tarea debe tener un identificador único.

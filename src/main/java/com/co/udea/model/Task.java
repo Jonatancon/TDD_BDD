@@ -18,10 +18,6 @@ public class Task {
         return id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -34,17 +30,8 @@ public class Task {
         return status;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public void setStatus(Status status) {
         this.status = status;
     }
-
 
 }

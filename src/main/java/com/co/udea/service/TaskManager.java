@@ -1,48 +1,59 @@
 package com.co.udea.service;
 
 import com.co.udea.model.Task;
-import com.co.udea.model.Status;
+import com.co.udea.persintence.Persistence;
 
 import java.util.*;
+import java.util.stream.Stream;
 
 public class TaskManager {
 
-    TreeMap<Integer, Task> tasks = new TreeMap<>();
-    Set<Task> completeTask = new HashSet<>();
-    public boolean createTask(Integer id, String title, String description) {
-        Task task = new Task(id, title, description);
-        tasks.put(id, task);
-        return true;
+    private final Persistence persistence;
+
+    public TaskManager(Persistence persistence) {
+        this.persistence = persistence;
     }
 
-    public Task getTask(Integer id) {
-        return tasks.get(id);
+    public boolean createTask(Task task) {
+
+        if (persistence.getTask(task.getId()).isPresent()) {
+            return false;
+        }
+
+        return persistence.createTask(task).isPresent();
     }
 
-    public boolean completeTask(Integer id) {
-        Task task = tasks.get(id);
-        task.setStatus(Status.CLOSE);
-        completeTask.add(task);
-        tasks.remove(id);
-
-        return true;
+    public Optional<Task> getTask(Integer id) {
+        return persistence.getTask(id);
     }
 
-    public boolean startTask(Integer id) {
-        tasks.get(id).setStatus(Status.PROGRESS);
-        return true;
+    public Optional<Task> completeTask(Integer id) {
+        if (persistence.getTask(id).isEmpty()) {
+            return Optional.empty();
+        }
+
+        return persistence.completeTask(id);
+    }
+
+    public Optional<Task> startTask(Integer id) {
+        if (persistence.getTask(id).isEmpty()) {
+            return Optional.empty();
+        }
+
+        return persistence.startTask(id);
     }
 
     public boolean deleteTask(Integer id) {
-        tasks.remove(id);
-        return true;
+        persistence.deleteTask(id);
+
+        return persistence.getTask(id).isPresent();
     }
 
-    public List<Task> getAllTaskPending() {
-         return tasks.values().stream().toList();
+    public Stream<Task> getAllTaskPending() {
+         return persistence.getAllTaskPending();
     }
 
-    public List<Task> getAllTaskComplete() {
-        return completeTask.stream().toList();
+    public Stream<Task> getAllTaskComplete() {
+        return persistence.getAllTaskComplete();
     }
 }

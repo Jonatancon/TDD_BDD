@@ -22,6 +22,7 @@ dependencies {
 
 sonar {
     properties {
+        property "sonar.coverage.exclusions", "**/persintence/**, **/vista/**, **/Main.java"
         property "sonar.projectKey", "Jonatancon_TDD_BDD_AYrzPMohMoGScxU2GPAy"
         property "sonar.organization", "Jonatancon"
         property "sonar.host.url", "http://localhost:9000"
@@ -38,7 +39,7 @@ jacocoTestReport {
     }
     afterEvaluate {
         classDirectories.setFrom(files(classDirectories.files.collect {
-            fileTree(dir: it, includes: ['**/model/**', '**/persintence/**', '**/service/**'])
+            fileTree(dir: it, includes: ['**/model/**', '**/service/**'])
         }))
     }
 }
